@@ -6,12 +6,20 @@ import Box from '@mui/material/Box';
 
 function App() {
   const [clicked, setClicked] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(false);
   const handleIconClick = async (id) => {
-    await fetch("https://faberkutlampserviceneprivate.azurewebsites.net/api/toggle?code=j3FIHPQlN7Hj4RREOVcoJVN_OoGAV19ODfG7MQr8liB8AzFuYydYVQ%3D%3D")
+    setLoading(true);
+    await fetch("https://amberkutweprivate.azure-api.net/berkutlamp/toggle?subscription-key=c7101a0574c24f00a55b078b1cef4fed")
+      .then(response => {
+        if (response.ok)
+          setClicked(!clicked);
+      })
       .catch(error => {
         console.error('There was an error!', error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    setClicked(!clicked);
   }
 
   React.useEffect(() => {
@@ -21,7 +29,7 @@ function App() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <IconButton onClick={handleIconClick}>
+      <IconButton onClick={handleIconClick} disabled={isLoading}>
         {clicked ? <ToggleOnIcon color='primary' sx={{ width: '100%', height: '100%' }} /> : <ToggleOffIcon color='primary' sx={{ width: '100%', height: '100%' }} />}
       </IconButton>
     </Box>
