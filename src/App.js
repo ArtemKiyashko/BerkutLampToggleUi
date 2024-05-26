@@ -9,7 +9,7 @@ function App() {
   const [isLoading, setLoading] = React.useState(false);
   const handleIconClick = async (id) => {
     setLoading(true);
-    await fetch("https://amberkutweprivate.azure-api.net/berkutlamp/toggle?subscription-key=c7101a0574c24f00a55b078b1cef4fed")
+    await fetch("https://amberkutweprivate.azure-api.net/berkutlamp/toggle")
       .then(response => {
         if (response.ok)
           setClicked(!clicked);
