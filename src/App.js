@@ -8,18 +8,20 @@ function App() {
   const [clicked, setClicked] = React.useState(false);
   const [isLoading, setLoading] = React.useState(false);
   const handleIconClick = async (id) => {
-    setLoading(true);
-    await fetch("https://amberkutweprivate.azure-api.net/berkutlamp/toggle")
-      .then(response => {
-        if (response.ok)
-          setClicked(!clicked);
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (!isLoading) {
+      setLoading(true);
+      await fetch("https://amberkutweprivate.azure-api.net/berkutlamp/toggle")
+        .then(response => {
+          if (response.ok)
+            setClicked(!clicked);
+        })
+        .catch(error => {
+          console.error('There was an error!', error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }
 
   React.useEffect(() => {
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <IconButton onClick={handleIconClick} disabled={isLoading}>
+      <IconButton onClick={handleIconClick}>
         {clicked ? <ToggleOnIcon color='primary' sx={{ width: '100%', height: '100%' }} /> : <ToggleOffIcon color='primary' sx={{ width: '100%', height: '100%' }} />}
       </IconButton>
     </Box>
