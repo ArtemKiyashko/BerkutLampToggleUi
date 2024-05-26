@@ -3,6 +3,7 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
+import './App.css'
 
 function App() {
   const [clicked, setClicked] = React.useState(false);
@@ -30,10 +31,16 @@ function App() {
   });
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <IconButton onClick={handleIconClick}>
-        {clicked ? <ToggleOnIcon color='primary' sx={{ width: '100%', height: '100%' }} /> : <ToggleOffIcon color='primary' sx={{ width: '100%', height: '100%' }} />}
-      </IconButton>
+    <Box>
+      <video autoplay="autoplay" muted id="berkut-stream" class="video-js vjs-big-play-centered" preload="auto" fluid="true" data-setup='{}' 
+      style={{position: 'absolute', top: '0', left: '0', zIndex: '-1000', width: '100%', height: '100%'}}>
+        <source src="http://solyanka.asuscomm.com:18088/hls/stream.m3u8" type="application/x-mpegURL" />
+      </video>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <IconButton onClick={handleIconClick}>
+          {clicked ? <ToggleOnIcon color='primary' sx={{ width: '100%', height: '100%' }} /> : <ToggleOffIcon color='primary' sx={{ width: '100%', height: '100%' }} />}
+        </IconButton>
+      </Box>
     </Box>
   );
 }
