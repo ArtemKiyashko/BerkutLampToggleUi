@@ -3,6 +3,7 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
+import BgImage from './img/background3.jpeg'
 
 function App() {
   const [clicked, setClicked] = React.useState(false);
@@ -30,7 +31,7 @@ function App() {
   });
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundImage: `url(${BgImage})`, backgroundSize: { xs: '100% 100%', lg: 'auto'} }}>
       <IconButton onClick={handleIconClick}>
         {clicked ? <ToggleOnIcon color='primary' sx={{ width: '100%', height: '100%' }} /> : <ToggleOffIcon color='primary' sx={{ width: '100%', height: '100%' }} />}
       </IconButton>
