@@ -76,6 +76,7 @@ function App() {
       .finally(() => {
         const connection = new signalR.HubConnectionBuilder()
           .withUrl(`${apiBaseUrl}/${signalrendpoint}`)
+          .withAutomaticReconnect()
           .configureLogging(signalR.LogLevel.Information)
           .build();
         connection.on('lampstatuschanged', (lampStatus) => {
