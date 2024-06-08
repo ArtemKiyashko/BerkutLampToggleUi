@@ -62,7 +62,7 @@ function App() {
   const [lampStatus, setLampStatus] = React.useState(false);
   const handleIconClick = async (event) => {
     fetch(`${apiBaseUrl}/${lampSetStateEndpoint}/${event.target.checked}`);
-    //setLampStatus(event.target.checked);
+    setLampStatus(event.target.checked);
   }
 
   const loadLampStatus = async () => {
@@ -93,7 +93,7 @@ function App() {
     window.Telegram.WebApp.expand();
 
     loadLampStatus();
-  });
+  }, []);
 
   return (
     <Box sx={{
