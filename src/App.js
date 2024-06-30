@@ -6,10 +6,10 @@ import * as signalR from "@microsoft/signalr";
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 
-const apiBaseUrl = 'https://amberkutweprivate.azure-api.net';
-const signalrendpoint = 'signalr';
-const lampSetStateEndpoint = 'berkutlamp/setstate';
-const lampGetStateEndpoint = 'berkutlamp/getstate';
+const apiBaseUrl = 'https://amberkutweprivate.azure-api.net/api-public';
+const signalrendpoint = 'lamp/signalr';
+const lampSetStateEndpoint = 'lamp/setstate';
+const lampGetStateEndpoint = 'lamp/getstate';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 124,
