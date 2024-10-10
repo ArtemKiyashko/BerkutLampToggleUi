@@ -89,8 +89,8 @@ function App() {
   }
 
   React.useEffect(() => {
-    // window.Telegram.WebApp.ready();
-    // window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.ready();
+    window.Telegram.WebApp.expand();
 
     loadLampStatus();
   }, []);
